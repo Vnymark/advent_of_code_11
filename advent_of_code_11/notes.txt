@@ -1,0 +1,9 @@
+﻿I need to calculate the power level of all 900 different fuel cells.
+I need to make a function to be able to take a 3x3 square of fuel cells and calculate the total power of that square.
+I need to be able to loop through all the possible squares to get the square with the largest total fuel power.
+
+It feels like it's easiest to make a function to get a square of cells, and make a list of possible fuelcells to loop through.
+If I make a function to calculate a square of example:
+1,1, 1,2, 1,3, 2,1, 2,2, 2,3, 3,1, 3,2 and 3,3.
+I wouldn't need to go closer to the edge than 298, since 299 and 299 will automatically be inside the square with 298.
+Then I should save the power of each square with the cordinate of the top-left fuel cell, since that is the required answer.

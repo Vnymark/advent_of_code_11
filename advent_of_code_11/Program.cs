@@ -6,7 +6,7 @@ namespace advent_of_code_11
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            int input = 1955;
         }
     }
 }
