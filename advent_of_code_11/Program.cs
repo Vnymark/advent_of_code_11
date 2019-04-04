@@ -12,6 +12,10 @@ namespace advent_of_code_11
             List<FuelCell> FuelCellList = new List<FuelCell>();
 
             AddFuelCells();
+            foreach (FuelCell fc in FuelCellList)
+            {
+                fc.CalculatePowerLevel(gridSerialNumber);
+            }
             Console.WriteLine();
 
             void AddFuelCells()
