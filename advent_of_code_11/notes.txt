@@ -7,3 +7,42 @@ If I make a function to calculate a square of example:
 1,1, 1,2, 1,3, 2,1, 2,2, 2,3, 3,1, 3,2 and 3,3.
 I wouldn't need to go closer to the edge than 298, since 299 and 299 will automatically be inside the square with 298.
 Then I should save the power of each square with the cordinate of the top-left fuel cell, since that is the required answer.
+
+FuelCell:
+List<int> Cordinates, Int RackId, Int PowerLevel
+
+void AddFuelCells() {
+	int x = 1;
+	while (x <= 300)
+	{
+		int y = 1;
+		while (y <= 300)
+		{
+			FuelCell fuelCell = new FuelCell();
+			fuelCell.Cordinates = new List<int>();
+			fuelCell.Cordinates.Add(x);
+			fuelCell.Cordinates.Add(y);
+			FuelCellList.Add(fuelCell);
+			y++;
+		}
+		x++;
+	}
+}
+
+void CalculatePowerLevel()
+{
+	List<int> PowerLevelNumbers = new List<int>();
+	this.RackId = this.Cordinates.ElementAt(0) + 10;
+	pLCount = (this.rackId * this.Cordinates.ElementAt(1) + puzzleInput) * RackId;
+	foreach (int n in pLCount)
+	{
+		PowerLevelNumbers.Add(n);
+	}
+	if (PowerLevelNumbers.Count >= 3) {
+		PowerLevelNumers.Reverse;
+		this.PowerLevel = PowerLevelNumbers.ElementAt(2);
+		this.PowerLevel += -5;
+	} else {
+		this.PowerLevel = 0;
+	}
+}
