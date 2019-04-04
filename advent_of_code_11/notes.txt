@@ -46,3 +46,24 @@ void CalculatePowerLevel()
 		this.PowerLevel = 0;
 	}
 }
+
+To calculate the 3x3 square that has the largest total power, I need to get the PowerLevel of the FuelCells that fits into the current Square and save it.
+
+Square:
+List<int> TopLeftCordinates, List<FuelCell> FuelCells, Int PowerLevel
+
+void CalculatePowerLevel() {
+	int x = 1;
+	this.FuelCells = new List<FuelCell>();
+	while (x < 3)
+	{
+		int y = 1;
+		while (y < 3)
+		{
+			string fuelCellId = x + "," + y;
+			this.FuelCells.Add(FuelCellList.Find(x => x.Id == fuelCellId);
+			y++;
+		}
+		x++;
+	}
+}
