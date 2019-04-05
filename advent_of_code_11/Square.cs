@@ -11,7 +11,7 @@ namespace advent_of_code_11
         public List<FuelCell> FuelCells { get; set; }
         public int PowerLevel { get; set; }
 
-        public void CalculatePowerLevel(List<FuelCell> FuelCellList)
+        public void CalculatePowerLevel(Dictionary<string, FuelCell> FuelCellList)
         {
             int x = this.TopLeftCordinates.ElementAt(0);
             this.FuelCells = new List<FuelCell>();
@@ -21,8 +21,8 @@ namespace advent_of_code_11
                 while (y <= this.TopLeftCordinates.ElementAt(1) + 2)
                 {
                     string fuelCellId = x + "," + y;
-                    this.FuelCells.Add(FuelCellList.Find(fc => fc.Id == fuelCellId));
-                    this.PowerLevel += this.FuelCells.Last().PowerLevel;
+
+                    this.PowerLevel += FuelCellList[fuelCellId].PowerLevel;
                     if (y < (this.TopLeftCordinates.ElementAt(1) + 2))
                     {
                         y++;
@@ -35,7 +35,7 @@ namespace advent_of_code_11
             }
         }
 
-        public string getCordinatesString()
+        public string GetCordinatesString()
         {
             return this.TopLeftCordinates.ElementAt(0) + "," + this.TopLeftCordinates.ElementAt(1);
         }
