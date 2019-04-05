@@ -11,7 +11,7 @@ namespace advent_of_code_11
             //Grid serial number is the puzzle input.
             int gridSerialNumber = 1955;
             var FuelCellList = new Dictionary<string, FuelCell>();
-            var SquareList = new Dictionary<string, Square>();
+            List<Square> SquareList = new List<Square>();
 
             AddFuelCells();
             CalculateFuelCells();
@@ -45,28 +45,36 @@ namespace advent_of_code_11
 
             void AddSquares()
             {
-                int x = 1;
-                while (x <= 298)
+                int i = 1;
+                while (i <= 300)
                 {
-                    int y = 1;
-                    while (y <= 298)
-                    {
+                    int position = 300 - i + 1;
 
-                        Square square = new Square
+                    int x = 1;
+                    while (x <= position)
+                    {
+                        int y = 1;
+                        while (y <= position)
                         {
-                            TopLeftCordinates = new List<int>
-                        {
-                            x,
-                            y
+
+                            Square square = new Square
+                            {
+                                TopLeftCordinates = new List<int>
+                                {
+                                    x,
+                                    y
+                                },
+                                Size = i
+                            };
+                            SquareList.Add(square);
+                            y++;
                         }
-                        };
-                        SquareList[x+","+y] = square;
-                        y++;
+                        x++;
                     }
-                    x++;
+                    i++;
                 }
             }
-           
+            
             void CalculateFuelCells()
             {
                 foreach (FuelCell fc in FuelCellList.Values)
@@ -78,18 +86,19 @@ namespace advent_of_code_11
             string CalculateLargestSquarePower() {
                 int highestSquarePowerLevel = 0;
                 string highestSquareCordinates = null;
-                foreach (Square square in SquareList.Values)
+                int highestSquareSize = 0;
+                foreach (Square square in SquareList)
                 {
-                    Console.WriteLine("Square with Top-Left Cordinates: {0},{1}", square.TopLeftCordinates.ElementAt(0), square.TopLeftCordinates.ElementAt(1));
-                    square.CalculatePowerLevel(FuelCellList);
+                    square.CalculatePowerLevel(FuelCellList, square.Size);
                     
                     if (highestSquarePowerLevel == 0 || highestSquarePowerLevel < square.PowerLevel)
                     {
                         highestSquarePowerLevel = square.PowerLevel;
+                        highestSquareSize = square.Size;
                         highestSquareCordinates = square.GetCordinatesString();
                     }
                 }
-                return highestSquareCordinates;
+                 return highestSquareCordinates;
             }
         }
     }

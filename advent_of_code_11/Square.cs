@@ -10,20 +10,21 @@ namespace advent_of_code_11
         public List<int> TopLeftCordinates { get; set; }
         public List<FuelCell> FuelCells { get; set; }
         public int PowerLevel { get; set; }
+        public int Size { get; set; }
 
-        public void CalculatePowerLevel(Dictionary<string, FuelCell> FuelCellList)
+        public void CalculatePowerLevel(Dictionary<string, FuelCell> FuelCellList, int i)
         {
             int x = this.TopLeftCordinates.ElementAt(0);
             this.FuelCells = new List<FuelCell>();
-            while (x < this.TopLeftCordinates.ElementAt(0) + 3)
+            while (x < this.TopLeftCordinates.ElementAt(0) + i)
             {
                 int y = this.TopLeftCordinates.ElementAt(1);
-                while (y <= this.TopLeftCordinates.ElementAt(1) + 2)
+                while (y <= this.TopLeftCordinates.ElementAt(1) + i-1)
                 {
                     string fuelCellId = x + "," + y;
 
                     this.PowerLevel += FuelCellList[fuelCellId].PowerLevel;
-                    if (y < (this.TopLeftCordinates.ElementAt(1) + 2))
+                    if (y < (this.TopLeftCordinates.ElementAt(1) + i-1))
                     {
                         y++;
                     } else

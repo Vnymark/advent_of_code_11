@@ -67,3 +67,32 @@ void CalculatePowerLevel() {
 		x++;
 	}
 }
+
+Part 2
+I need to be able to calculate how many squares I can get based on the size allowed.
+That way I can insert the square size and calculate that many squares.
+
+300x300 = 90k, 300x300 Squares = 1
+300x300 = 90k, 299x299 Squares = 4
+300x300 = 90k, 298x298 Squares = 9 
+300x300 = 90k, 297x297 Squares = 16
+
+If I count squareSize - GridSize + 1 = get a number.
+The one is counting the starting position.
+So the one starting position, + the number of steps you can move to the right( since top left is the starting position), with a square of 299x299 it's one grid.
+So you got the one grid position you can move to the right, and the starting position.
+Which leaves you with a total of 2 different grid positions in X, you can also move the same amount of steps downwards Y.
+So if you multiply that 2x2 you get 4.
+And that leaves the number of Squares you can get on that grid.
+
+---------
+
+Or maybe, I can add squares based on the dynamic square size.
+
+--------
+It's slow, but works.
+
+Maybe I can calculate the power of the square by using the last square with the same starting position but one size smaller and only add the new fuelcells.
+
+Get FC where X = size and Y = Counter (to Size)
+Get FC where Y = size and X = Counter (to Size)
